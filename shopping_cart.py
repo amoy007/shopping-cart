@@ -25,20 +25,23 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-print(products)
-# pprint(products)
+# INFO CAPTURE / INPUT PROCESS
+
+selected_id = input("Please input a product identifier:")
+print(selected_id)
+print(type(selected_id))
+
+# INFO DISPLAY / OUTPUT PROCESS
+
+
+
 
 # TO DO
 # Write a program that asks the user to input one or more product identifiers, then looks up the prices for each, then prints an itemized customer receipt including the total amount owed.# 
-
 # The program should use one of the provided datastores (see "Data Setup") to represent the store owner's inventory of products and prices.# 
-
 # The program should prompt the checkout clerk to input the identifier of each shopping cart item, one at a time.# 
-
 # When the clerk inputs a product identifier, the program should validate it, displaying a helpful message like "Hey, are you sure that product identifier is correct? Please try again!" if there are no products matching the given identifier.# 
-
 # At any time the clerk should be able to indicate there are no more shopping cart items by inputting the word DONE or otherwise indicating they are done with the process.# 
-
 # After the clerk indicates there are no more items, the program should print a custom receipt on the screen. The receipt should include the following components:# 
 #    A grocery store name of your choice
 #    A grocery store phone number and/or website URL and/or address of choice
