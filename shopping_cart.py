@@ -27,11 +27,26 @@ products = [
 
 # INFO CAPTURE / INPUT PROCESS
 
-selected_id = input("Please input a product identifier:")
-print(selected_id)
-print(type(selected_id))
+selected_id = input("Please input a product identifier:") 
+#  print(type(selected_id)) 
+#  Note: if you enter 9, the result is "9" as a (string) output.
+
+matching_products = [item for item in products if int(item["id"]) == int(selected_id)] #List info: https://github.com/prof-rossetti/nyu-info-2335-201905/blob/master/notes/python/datatypes/lists.md
+
+matching_product = matching_products[0]
+
+def to_usd(my_price):
+    return "${0:,.2f}".format(my_price)
+
+for item in products:    
+    price_usd = to_usd(item['price'])
+
+print("SELECTED PRODUCT:",matching_product["name"],to_usd(matching_product["price"]))
+
+
 
 # INFO DISPLAY / OUTPUT PROCESS
+
 
 
 
@@ -63,3 +78,4 @@ print(type(selected_id))
 # Info Outputs (Receipt)	Displays names and prices of all scanned products	15%
 # Info Outputs (Receipt)	Displays tax and totals	15%
 # Dev Process	Submitted via Git repository which reflects an incremental revision history	20%
+# END
