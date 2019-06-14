@@ -32,6 +32,8 @@ products = [
 
 # INFO CAPTURE / INPUT PROCESS
 
+total_price = 0
+
 while True:
     selected_id = input("Please input a product identifier:") 
     #  print(type(selected_id)) 
@@ -46,16 +48,14 @@ while True:
 
         for item in products:    
             price_usd = to_usd(item['price'])
-
+        total_price = total_price + matching_product["price"]
         print("SELECTED PRODUCT:",matching_product["name"],to_usd(matching_product["price"]))
-
-
 
 
 
 # INFO DISPLAY / OUTPUT PROCESS
 
-
+print("TOTAL PRICE:",to_usd(total_price))
 
 
 
