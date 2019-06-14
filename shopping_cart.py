@@ -1,6 +1,11 @@
 # shopping_cart.py
 
-#from pprint import pprint
+from pprint import pprint
+
+
+def to_usd(my_price):
+    return "${0:,.2f}".format(my_price)
+
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -27,21 +32,24 @@ products = [
 
 # INFO CAPTURE / INPUT PROCESS
 
-selected_id = input("Please input a product identifier:") 
-#  print(type(selected_id)) 
-#  Note: if you enter 9, the result is "9" as a (string) output.
+while True:
+    selected_id = input("Please input a product identifier:") 
+    #  print(type(selected_id)) 
+    #  Note: if you enter 9, the result is "9" as a (string) output.
 
-matching_products = [item for item in products if int(item["id"]) == int(selected_id)] #List info: https://github.com/prof-rossetti/nyu-info-2335-201905/blob/master/notes/python/datatypes/lists.md
+    if selected_id == "DONE":
+        break
+    else:
+        matching_products = [item for item in products if int(item["id"]) == int(selected_id)] #List info: https://github.com/prof-rossetti/nyu-info-2335-201905/blob/master/notes/python/datatypes/lists.md
 
-matching_product = matching_products[0]
+        matching_product = matching_products[0]
 
-def to_usd(my_price):
-    return "${0:,.2f}".format(my_price)
+        for item in products:    
+            price_usd = to_usd(item['price'])
 
-for item in products:    
-    price_usd = to_usd(item['price'])
+        print("SELECTED PRODUCT:",matching_product["name"],to_usd(matching_product["price"]))
 
-print("SELECTED PRODUCT:",matching_product["name"],to_usd(matching_product["price"]))
+
 
 
 
