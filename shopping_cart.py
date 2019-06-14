@@ -52,11 +52,31 @@ while True:
         print("SELECTED PRODUCT:",matching_product["name"],to_usd(matching_product["price"]))
 
 
-
-# INFO DISPLAY / OUTPUT PROCESS
+# INFO DISPLAY / OUTPUT PROCESS - after "DONE" is entered:
 
 print("TOTAL PRICE:",to_usd(total_price))
-
+print("---------------------------------")
+print("FOODIEZ GROCER, INC.")
+print("WWW.NYU.EDU/DINING")
+print("---------------------------------")
+print("CHECKOUT AT: ","") # TO add in date value "2019-06-06 11:31 AM"
+print("---------------------------------")
+print("SELECTED PRODUCTS:")
+print(" ... Chocolate Sandwich Cookies ($3.50)")
+print(" ... Cut Russet Potatoes Steam N' Mash ($4.25)")
+print(" ... Dry Nose Oil ($21.99)")
+print(" ... Cut Russet Potatoes Steam N' Mash ($4.25)")
+print(" ... Cut Russet Potatoes Steam N' Mash ($4.25)")
+print(" ... Mint Chocolate Flavored Syrup ($4.50)")
+print(" ... Chocolate Fudge Layer Cake ($18.50)")
+print("---------------------------------")
+print("SUBTOTAL: ",to_usd(total_price))
+tax = total_price*.08875
+print("TAX (8.875%): ",to_usd(tax))
+print("TOTAL: ",to_usd(total_price + tax))
+print("---------------------------------")
+print("THANK YOU, COME AGAIN!")
+print("---------------------------------")
 
 
 # TO DO
