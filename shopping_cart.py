@@ -53,14 +53,14 @@ while True:
 
 # INFO DISPLAY / OUTPUT PROCESS - after "DONE" is entered:
 
-#print("TOTAL PRICE:",to_usd(total_price))
-#print("---------------------------------")
-#print("FOODIEZ GROCER, INC.")
-#print("WWW.NYU.EDU/DINING")
-#print("---------------------------------")
-#print("CHECKOUT AT: ","") # TO add in date value "2019-06-06 11:31 AM"
-#print("---------------------------------")
-#print("SELECTED PRODUCTS:")
+print("---------------------------------")
+print("FOODIEZ GROCER, INC.")
+print("88 W 88TH ST, NEW YORK, NY 10024")
+print("WWW.NYU.EDU/DINING/FOODIEZ")
+print("---------------------------------")
+print("CHECKOUT AT: ","") # TO add in date value "2019-06-06 11:31 AM"
+print("---------------------------------")
+print("SELECTED PRODUCTS:")
 
 for selected_id in selected_ids:
     matching_products = [item for item in products if int(item["id"]) == int(selected_id)] #List info: https://github.com/prof-rossetti/nyu-info-2335-201905/blob/master/notes/python/datatypes/lists.md
@@ -71,14 +71,14 @@ for selected_id in selected_ids:
     print(matching_product["name"],to_usd(matching_product["price"]))
 
 
-#print("---------------------------------")
+print("---------------------------------")
 print("SUBTOTAL: ",to_usd(total_price))
-#tax = total_price*.08875
-#print("TAX (8.875%): ",to_usd(tax))
-#print("TOTAL: ",to_usd(total_price + tax))
-#print("---------------------------------")
-#print("THANK YOU, COME AGAIN!")
-#print("---------------------------------")
+tax = total_price*.08875
+print("TAX (8.875%): ",to_usd(tax))
+print("TOTAL: ",to_usd(total_price + tax))
+print("---------------------------------")
+print("THANK YOU! VISIT OUR WEBSITE TO LEARN HOW TO EARN FOODIEZ POINTS ON EVERY PURCHASE ;)")
+print("---------------------------------")
 
 
 # TO DO
@@ -100,12 +100,12 @@ print("SUBTOTAL: ",to_usd(total_price))
 
 # Project submissions will be evaluated according to the requirements set forth above, as summarized by the rubric below:
 # Category	Requirement	Weight
-# Info Inputs	Captures / scans product identifiers	10%
-# Info Inputs	Handles invalid inputs	10%
-# Info Inputs	Handles the "DONE" signal	10%
-# Info Outputs (Receipt)	Displays store info	10%
-# Info Outputs (Receipt)	Displays checkout date and time	10%
-# Info Outputs (Receipt)	Displays names and prices of all scanned products	15%
-# Info Outputs (Receipt)	Displays tax and totals	15%
-# Dev Process	Submitted via Git repository which reflects an incremental revision history	20%
+# Info Inputs	Captures / scans product identifiers	10%: YES/NO
+# Info Inputs	Handles invalid inputs	10%: YES/NO
+# Info Inputs	Handles the "DONE" signal	10%: YES/NO
+# Info Outputs (Receipt)	Displays store info	10%: YES/NO
+# Info Outputs (Receipt)	Displays checkout date and time	10%: YES/NO
+# Info Outputs (Receipt)	Displays names and prices of all scanned products	15%: YES/NO
+# Info Outputs (Receipt)	Displays tax and totals	15%: YES/NO
+# Dev Process	Submitted via Git repository which reflects an incremental revision history	20%: YES/NO
 # END
