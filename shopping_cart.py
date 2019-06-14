@@ -33,6 +33,7 @@ products = [
 # INFO CAPTURE / INPUT PROCESS
 
 total_price = 0
+selected_ids = []
 
 while True:
     selected_id = input("Please input a product identifier:") 
@@ -42,41 +43,42 @@ while True:
     if selected_id == "DONE":
         break
     else:
-        matching_products = [item for item in products if int(item["id"]) == int(selected_id)] #List info: https://github.com/prof-rossetti/nyu-info-2335-201905/blob/master/notes/python/datatypes/lists.md
-
-        matching_product = matching_products[0]
-
-        for item in products:    
-            price_usd = to_usd(item['price'])
-        total_price = total_price + matching_product["price"]
-        print("SELECTED PRODUCT:",matching_product["name"],to_usd(matching_product["price"]))
-
+        #matching_products = [item for item in products if int(item["id"]) == int(selected_id)] #List info: https://github.com/prof-rossetti/nyu-info-2335-201905/blob/master/notes/python/datatypes/lists.md
+        #matching_product = matching_products[0]
+        #for item in products:    
+        #    price_usd = to_usd(item['price'])
+        #total_price = total_price + matching_product["price"]
+        #print("SELECTED PRODUCT:",matching_product["name"],to_usd(matching_product["price"]))
+        selected_ids.append(selected_id)
 
 # INFO DISPLAY / OUTPUT PROCESS - after "DONE" is entered:
 
-print("TOTAL PRICE:",to_usd(total_price))
-print("---------------------------------")
-print("FOODIEZ GROCER, INC.")
-print("WWW.NYU.EDU/DINING")
-print("---------------------------------")
-print("CHECKOUT AT: ","") # TO add in date value "2019-06-06 11:31 AM"
-print("---------------------------------")
-print("SELECTED PRODUCTS:")
-print(" ... Chocolate Sandwich Cookies ($3.50)")
-print(" ... Cut Russet Potatoes Steam N' Mash ($4.25)")
-print(" ... Dry Nose Oil ($21.99)")
-print(" ... Cut Russet Potatoes Steam N' Mash ($4.25)")
-print(" ... Cut Russet Potatoes Steam N' Mash ($4.25)")
-print(" ... Mint Chocolate Flavored Syrup ($4.50)")
-print(" ... Chocolate Fudge Layer Cake ($18.50)")
-print("---------------------------------")
+#print("TOTAL PRICE:",to_usd(total_price))
+#print("---------------------------------")
+#print("FOODIEZ GROCER, INC.")
+#print("WWW.NYU.EDU/DINING")
+#print("---------------------------------")
+#print("CHECKOUT AT: ","") # TO add in date value "2019-06-06 11:31 AM"
+#print("---------------------------------")
+#print("SELECTED PRODUCTS:")
+
+for selected_id in selected_ids:
+    matching_products = [item for item in products if int(item["id"]) == int(selected_id)] #List info: https://github.com/prof-rossetti/nyu-info-2335-201905/blob/master/notes/python/datatypes/lists.md
+    matching_product = matching_products[0]
+    for item in products:    
+        price_usd = to_usd(item['price'])
+    total_price = total_price + matching_product["price"]
+    print(matching_product["name"],to_usd(matching_product["price"]))
+
+
+#print("---------------------------------")
 print("SUBTOTAL: ",to_usd(total_price))
-tax = total_price*.08875
-print("TAX (8.875%): ",to_usd(tax))
-print("TOTAL: ",to_usd(total_price + tax))
-print("---------------------------------")
-print("THANK YOU, COME AGAIN!")
-print("---------------------------------")
+#tax = total_price*.08875
+#print("TAX (8.875%): ",to_usd(tax))
+#print("TOTAL: ",to_usd(total_price + tax))
+#print("---------------------------------")
+#print("THANK YOU, COME AGAIN!")
+#print("---------------------------------")
 
 
 # TO DO
