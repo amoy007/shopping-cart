@@ -2,10 +2,8 @@
 
 from pprint import pprint
 
-
 def to_usd(my_price):
     return "${0:,.2f}".format(my_price)
-
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -39,9 +37,12 @@ while True:
     selected_id = input("Please input a product identifier:") 
     #  print(type(selected_id)) 
     #  Note: if you enter 9, the result is "9" as a (string) output.
-
     if selected_id == "DONE":
         break
+    elif not selected_id.isdigit(): 
+        print ("Hey, this isn't a valid input. Please try again!")
+    elif int(selected_id) not in range(1,21):
+        print("Hey, this product identifier doesn't exist. Please try again!")
     else:
         #matching_products = [item for item in products if int(item["id"]) == int(selected_id)] #List info: https://github.com/prof-rossetti/nyu-info-2335-201905/blob/master/notes/python/datatypes/lists.md
         #matching_product = matching_products[0]
@@ -60,7 +61,7 @@ print("WWW.NYU.EDU/DINING/FOODIEZ")
 print("---------------------------------")
 import datetime
 now = datetime.datetime.now()
-print("CHECKOUT AT: ",now.strftime("%Y-%m-%d %H:%M %p")) # TO add in date value "2019-06-06 11:31 AM"
+print("CHECKOUT AT: ",now.strftime("%Y-%m-%d %H:%M %p")) # https://stackoverflow.com/questions/1759455/how-can-i-account-for-period-am-pm-with-datetime-strptime
 print("---------------------------------")
 print("SELECTED PRODUCTS:")
 
@@ -102,12 +103,12 @@ print("---------------------------------")
 
 # Project submissions will be evaluated according to the requirements set forth above, as summarized by the rubric below:
 # Category	Requirement	Weight
-# Info Inputs	Captures / scans product identifiers	10%: YES/NO
+# Info Inputs	Captures / scans product identifiers	10%: YES
 # Info Inputs	Handles invalid inputs	10%: YES/NO
-# Info Inputs	Handles the "DONE" signal	10%: YES/NO
-# Info Outputs (Receipt)	Displays store info	10%: YES/NO
-# Info Outputs (Receipt)	Displays checkout date and time	10%: YES/NO
-# Info Outputs (Receipt)	Displays names and prices of all scanned products	15%: YES/NO
-# Info Outputs (Receipt)	Displays tax and totals	15%: YES/NO
+# Info Inputs	Handles the "DONE" signal	10%: YES
+# Info Outputs (Receipt)	Displays store info	10%: YES
+# Info Outputs (Receipt)	Displays checkout date and time	10%: YES
+# Info Outputs (Receipt)	Displays names and prices of all scanned products	15%: YES
+# Info Outputs (Receipt)	Displays tax and totals	15%: YES
 # Dev Process	Submitted via Git repository which reflects an incremental revision history	20%: YES/NO
 # END
