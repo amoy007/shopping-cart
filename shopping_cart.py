@@ -1,5 +1,17 @@
 # shopping_cart.py
 
+# Email Receipt Set Up: https://github.com/prof-rossetti/nyu-info-2335-201905/blob/master/notes/python/packages/sendgrid.md
+import os
+from dotenv import load_dotenv
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+
+load_dotenv()
+
+SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY", "OOPS, please set env var called 'SENDGRID_API_KEY'")
+MY_ADDRESS = os.environ.get("MY_EMAIL_ADDRESS", "OOPS, please set env var called 'MY_EMAIL_ADDRESS'")
+
+
 from pprint import pprint
 
 def to_usd(my_price):
@@ -84,6 +96,33 @@ print("TOTAL: ",to_usd(total_price + tax))
 print("---------------------------------")
 print("THANK YOU! VISIT OUR WEBSITE TO LEARN HOW TO EARN FOODIEZ POINTS ON EVERY PURCHASE ;)")
 print("---------------------------------")
+
+receipt_print = input("Would you like an email? (Enter 'y' or 'n' without the quotes):") 
+
+if receipt_print == "n":
+    print("Thanks for your business.")
+elif receipt_print == "y":
+    client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
+    print("CLIENT:", type(client))
+    subject = "Your Receipt from Foodiez Grocer, Inc."
+    html_content = "Hello World"
+    
+    print("HTML:", html_content)
+    message = Mail(from_email=MY_ADDRESS, to_emails=MY_ADDRESS, subject=subject, html_content=html_content)
+    try:
+        response = client.send(message)
+        print("RESPONSE:", type(response)) #> <class 'python_http_client.client.Response'>
+        print(response.status_code) #> 202 indicates SUCCESS
+        print(response.body)
+        print(response.headers)
+    except Exception as e:
+        print("OOPS", e.message)
+else:
+    print("Thanks for your business")
+
+        
+
+client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
 
 
 # TO DO
