@@ -102,13 +102,16 @@ receipt_print = input("Would you like an email? (Enter 'y' or 'n' without the qu
 if receipt_print == "n":
     print("Thanks for your business.")
 elif receipt_print == "y":
+    CUSTOMER_ADDRESS = input("Type in valid email:") 
+
     client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
     print("CLIENT:", type(client))
-    subject = "Your Receipt from Foodiez Grocer, Inc."
-    html_content = "Hello World"
+    subject = "Your Receipt from FOODIEZ GROCER, INC."
+    
+    html_content = "CHECKOUT AT: " + now.strftime("%Y-%m-%d %H:%M %p") + " Total Purchase: " + to_usd(total_price + tax)
     
     print("HTML:", html_content)
-    message = Mail(from_email=MY_ADDRESS, to_emails=MY_ADDRESS, subject=subject, html_content=html_content)
+    message = Mail(from_email=MY_ADDRESS, to_emails=CUSTOMER_ADDRESS, subject=subject, html_content=html_content)
     try:
         response = client.send(message)
         print("RESPONSE:", type(response)) #> <class 'python_http_client.client.Response'>
