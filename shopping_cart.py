@@ -60,7 +60,7 @@ print("WWW.NYU.EDU/DINING/FOODIEZ")
 print("---------------------------------")
 import datetime
 now = datetime.datetime.now()
-print("CHECKOUT AT: ",now.strftime("%Y-%m-%d %H:%M")) # TO add in date value "2019-06-06 11:31 AM"
+print("CHECKOUT AT: ",now.strftime("%Y-%m-%d %H:%M %p")) # TO add in date value "2019-06-06 11:31 AM"
 print("---------------------------------")
 print("SELECTED PRODUCTS:")
 
@@ -75,8 +75,8 @@ for selected_id in selected_ids:
 
 print("---------------------------------")
 print("SUBTOTAL: ",to_usd(total_price))
-tax = total_price*.08875
-print("TAX (8.875%): ",to_usd(tax))
+tax = total_price*.0875
+print("TAX (8.75%): ",to_usd(tax))
 print("TOTAL: ",to_usd(total_price + tax))
 print("---------------------------------")
 print("THANK YOU! VISIT OUR WEBSITE TO LEARN HOW TO EARN FOODIEZ POINTS ON EVERY PURCHASE ;)")
