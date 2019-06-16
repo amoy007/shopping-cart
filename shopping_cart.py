@@ -58,7 +58,9 @@ print("FOODIEZ GROCER, INC.")
 print("88 W 88TH ST, NEW YORK, NY 10024")
 print("WWW.NYU.EDU/DINING/FOODIEZ")
 print("---------------------------------")
-print("CHECKOUT AT: ","") # TO add in date value "2019-06-06 11:31 AM"
+import datetime
+now = datetime.datetime.now()
+print("CHECKOUT AT: ",now.strftime("%Y-%m-%d %H:%M")) # TO add in date value "2019-06-06 11:31 AM"
 print("---------------------------------")
 print("SELECTED PRODUCTS:")
 
