@@ -39,7 +39,9 @@ while True:
     #  Note: if you enter 9, the result is "9" as a (string) output.
     if selected_id == "DONE":
         break
-    elif not selected_id.isdigit(): 
+    if selected_id == "done":
+        break
+    elif not selected_id.isnumeric(): # or use selected_id.isdigit() or selected_id.isdecimal() https://docs.python.org/3/library/stdtypes.html?highlight=isnumeric
         print ("Hey, this isn't a valid input. Please try again!")
     elif int(selected_id) not in range(1,21):
         print("Hey, this product identifier doesn't exist. Please try again!")
@@ -104,7 +106,7 @@ print("---------------------------------")
 # Project submissions will be evaluated according to the requirements set forth above, as summarized by the rubric below:
 # Category	Requirement	Weight
 # Info Inputs	Captures / scans product identifiers	10%: YES
-# Info Inputs	Handles invalid inputs	10%: YES/NO
+# Info Inputs	Handles invalid inputs	10%: YES
 # Info Inputs	Handles the "DONE" signal	10%: YES
 # Info Outputs (Receipt)	Displays store info	10%: YES
 # Info Outputs (Receipt)	Displays checkout date and time	10%: YES
