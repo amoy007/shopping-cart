@@ -109,7 +109,7 @@ elif receipt_print == "y":
 
     subject = "Your Receipt from FOODIEZ GROCER, INC."
 
-    html_content = "Hello World"
+    html_content = "CHECKOUT AT: " + now.strftime("%Y-%m-%d %H:%M %p") + " Total Purchase: " + to_usd(total_price + tax)
     print("HTML:", html_content)
 
     message = Mail(from_email=MY_EMAIL_ADDRESS, to_emails=CUSTOMER_ADDRESS, subject=subject, html_content=html_content)
@@ -124,27 +124,8 @@ elif receipt_print == "y":
 
     except Exception as e:
         print("OOPS", e.message)
-    #subject = 
-    #
-    #html_content = "CHECKOUT AT: " + now.strftime("%Y-%m-%d %H:%M %p") + " Total Purchase: " + to_usd(total_price + tax)
-    #
-    #print("HTML:", html_content)
-    #message = Mail(from_email=MY_ADDRESS, to_emails=CUSTOMER_ADDRESS, subject=subject, html_content=html_content)
-    #try:
-    #    response = client.send(message)
-    #    print("RESPONSE:", type(response)) #> <class 'python_http_client.client.Response'>
-    #    print(response.status_code) #> 202 indicates SUCCESS
-    #    print(response.body)
-    #    print(response.headers)
-    #except Exception as e:
-    #    print("OOPS", e.message)
 else:
-    print("Thanks for your business")
-
-        
-
-client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
-
+    print("Thanks for your business.")
 
 # TO DO
 # Write a program that asks the user to input one or more product identifiers, then looks up the prices for each, then prints an itemized customer receipt including the total amount owed.# 
