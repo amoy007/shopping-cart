@@ -102,31 +102,17 @@ receipt_print = input("Would you like an email? (Enter 'y' or 'n' without the qu
 if receipt_print == "n":
     print("Thanks for your business.")
 elif receipt_print == "y":
+    CUSTOMER_ADDRESS = input("Type in valid email:")
     client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
     
     print("CLIENT:", type(client))
 
-    subject = "Your Receipt from the Green Grocery Store"
+    subject = "Your Receipt from FOODIEZ GROCER, INC."
 
     html_content = "Hello World"
-    #
-    # or maybe ...
-    #html_content = "Hello <strong>World</strong>"
-    #
-    # or maybe ...
-    #html_list_items = "<li>You ordered: Product 1</li>"
-    #html_list_items += "<li>You ordered: Product 2</li>"
-    #html_list_items += "<li>You ordered: Product 3</li>"
-    #html_content = f"""
-    #<h3>Hello this is your receipt</h3>
-    #<p>Date: ____________</p>
-    #<ol>
-    #    {html_list_items}
-    #</ol>
-    #"""
     print("HTML:", html_content)
 
-    message = Mail(from_email=MY_ADDRESS, to_emails=MY_ADDRESS, subject=subject, html_content=html_content)
+    message = Mail(from_email=MY_EMAIL_ADDRESS, to_emails=CUSTOMER_ADDRESS, subject=subject, html_content=html_content)
 
     try:
         response = client.send(message)
@@ -138,11 +124,7 @@ elif receipt_print == "y":
 
     except Exception as e:
         print("OOPS", e.message)
-    #CUSTOMER_ADDRESS = input("Type in valid email:") 
-    #
-    #client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
-    #print("CLIENT:", type(client))
-    #subject = "Your Receipt from FOODIEZ GROCER, INC."
+    #subject = 
     #
     #html_content = "CHECKOUT AT: " + now.strftime("%Y-%m-%d %H:%M %p") + " Total Purchase: " + to_usd(total_price + tax)
     #
