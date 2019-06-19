@@ -9,6 +9,7 @@ from sendgrid.helpers.mail import Mail
 load_dotenv()
 
 SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY", "OOPS, please set env var called 'SENDGRID_API_KEY'")
+SENDGRID_TEMPLATE_ID = os.environ.get("SENDGRID_TEMPLATE_ID", "OOPS, please set env var called 'SENDGRID_TEMPLATE_ID'")
 MY_EMAIL_ADDRESS = os.environ.get("MY_EMAIL_ADDRESS", "OOPS, please set env var called 'MY_EMAIL_ADDRESS'")
 
 
@@ -97,33 +98,66 @@ print("---------------------------------")
 print("THANK YOU! VISIT OUR WEBSITE TO LEARN HOW TO EARN FOODIEZ POINTS ON EVERY PURCHASE ;)")
 print("---------------------------------")
 
+
 receipt_print = input("Would you like an email? (Enter 'y' or 'n' without the quotes):") 
 
 if receipt_print == "n":
     print("Thanks for your business.")
 elif receipt_print == "y":
     CUSTOMER_ADDRESS = input("Type in valid email:")
-    client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
-    
+
+    template_data = {
+    "total_price_usd": "$14.95",
+    "human_friendly_timestamp": "June 1st, 2019 10:00 AM",
+    "products":[
+        {"id":1, "name": "Product 1"},
+        {"id":2, "name": "Product 2"},
+        {"id":3, "name": "Product 3"},
+        {"id":2, "name": "Product 2"},
+        {"id":1, "name": "Product 1"}
+        ]
+    } # or construct this dictionary dynamically based on the results of some other process :-D
+
+    client = SendGridAPIClient(SENDGRID_API_KEY)
     print("CLIENT:", type(client))
 
-    subject = "Your Receipt from FOODIEZ GROCER, INC."
+    message = Mail(from_email=MY_EMAIL_ADDRESS, to_emails=CUSTOMER_ADDRESS)
+    print("MESSAGE:", type(message))
 
-    html_content = "CHECKOUT AT: " + now.strftime("%Y-%m-%d %H:%M %p") + " Total Purchase: " + to_usd(total_price + tax)
-    print("HTML:", html_content)
+    message.template_id = SENDGRID_TEMPLATE_ID
 
-    message = Mail(from_email=MY_EMAIL_ADDRESS, to_emails=CUSTOMER_ADDRESS, subject=subject, html_content=html_content)
+    message.dynamic_template_data = template_data
 
     try:
         response = client.send(message)
-
-        print("RESPONSE:", type(response)) #> <class 'python_http_client.client.Response'>
-        print(response.status_code) #> 202 indicates SUCCESS
+        print("RESPONSE:", type(response))
+        print(response.status_code)
         print(response.body)
         print(response.headers)
 
     except Exception as e:
-        print("OOPS", e.message)
+        print("OOPS", e)
+    # client = SendGridAPIClient(SENDGRID_API_KEY) #> <class 'sendgrid.sendgrid.SendGridAPIClient>
+    # 
+    # print("CLIENT:", type(client))
+    # 
+    # subject = "Your Receipt from FOODIEZ GROCER, INC."
+    # 
+    # html_content = "CHECKOUT AT: " + now.strftime("%Y-%m-%d %H:%M %p") + " Total Purchase: " + to_usd(total_price + tax)
+    # print("HTML:", html_content)
+    # 
+    # message = Mail(from_email=MY_EMAIL_ADDRESS, to_emails=CUSTOMER_ADDRESS, subject=subject, html_content=html_content)
+    # 
+    # try:
+    #     response = client.send(message)
+    # 
+    #     print("RESPONSE:", type(response)) #> <class 'python_http_client.client.Response'>
+    #     print(response.status_code) #> 202 indicates SUCCESS
+    #     print(response.body)
+    #     print(response.headers)
+    # 
+    # except Exception as e:
+    #     print("OOPS", e.message)
 else:
     print("Thanks for your business.")
 

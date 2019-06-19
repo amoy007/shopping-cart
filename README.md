@@ -5,6 +5,7 @@ Alice's Shopping Cart Project
   + Anaconda 3.7
   + Python 3.7
   + Git
+  + Visual Studio Code
 
 
 ## Installation
@@ -30,6 +31,17 @@ conda activate shopping-env
 Install Python package dependencies (dotenv package, sendgrid 6.0.5 package):
 ```sh
 pip install -r requirements.txt # (first time only)
+```
+
+For Email Receipts:
+Using Visual Studio Code, create a ".env" file in the shopping-cart folder and input the following info.
+
+```sh
+SENDGRID_API_KEY = "xyz key" # (must input your own SendGrid API Key)
+
+SENDGRID_TEMPLATE_ID = "d-xyz template" # (must input your own SendGrid template)
+
+MY_EMAIL_ADDRESS = "example@gmail.com" # (must input your own email that you want customers to see upon receiving a receipt.)
 ```
 
 ## Usage
