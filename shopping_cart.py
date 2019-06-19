@@ -107,8 +107,8 @@ elif receipt_print == "y":
     CUSTOMER_ADDRESS = input("Type in valid email:")
 
     template_data = {
-    "total_price_usd": "$14.95",
-    "human_friendly_timestamp": "June 1st, 2019 10:00 AM",
+    "total_price_usd": to_usd(total_price + tax),
+    "human_friendly_timestamp": now.strftime("%Y-%m-%d %H:%M %p"),
     "products":[
         {"id":1, "name": "Product 1"},
         {"id":2, "name": "Product 2"},
