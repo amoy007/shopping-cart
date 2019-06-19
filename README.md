@@ -21,6 +21,17 @@ After cloning the repo, navigate there from the command-line:
 cd ~/Desktop/shopping-cart
 ```
 
+Open the environment.
+```sh
+conda create -n shopping-env python=3.7 # (first time only)
+conda activate shopping-env
+```
+
+Install Python package dependencies (dotenv package, sendgrid 6.0.5 package):
+```sh
+pip install -r requirements.txt # (first time only)
+```
+
 ## Usage
 
 1. In the command-line run the program
